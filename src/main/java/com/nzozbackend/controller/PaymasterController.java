@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class PaymasterController {
-   PaymasterService paymasterService;
+    private final  PaymasterService paymasterService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createPaymaster(@RequestBody PaymasterDto paymasterDto) {
@@ -35,7 +35,7 @@ public class PaymasterController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping (value = "{taskId}")
+    @DeleteMapping (value = "{paymasterId}")
     public ResponseEntity <Void> deletePaymaster( @PathVariable Long paymasterId) {
         paymasterService.deletePaymasterById(paymasterId);
         return ResponseEntity.ok().build();

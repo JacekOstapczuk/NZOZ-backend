@@ -1,15 +1,14 @@
 package com.nzozbackend.mapper;
 
-import com.nzozbackend.domain.Dto.OutpostDto;
-import com.nzozbackend.domain.Dto.PaymasterDto;
+
 import com.nzozbackend.domain.Dto.PhysicianDto;
-import com.nzozbackend.domain.Outpost;
-import com.nzozbackend.domain.Paymaster;
 import com.nzozbackend.domain.Physician;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class PhysicianMapper {
 
 
@@ -18,8 +17,8 @@ public class PhysicianMapper {
                 physicianDto.getId(),
                 physicianDto.getName(),
                 physicianDto.getSurname(),
-                physicianDto.getPWZ(),
-                physicianDto.getVisit()
+                physicianDto.getPwz(),
+                physicianDto.getVisits()
         );
     }
 
@@ -28,8 +27,8 @@ public class PhysicianMapper {
                 physician.getId(),
                 physician.getName(),
                 physician.getSurname(),
-                physician.getPWZ(),
-                physician.getVisit()
+                physician.getPwz(),
+                physician.getVisits()
         );
     }
 

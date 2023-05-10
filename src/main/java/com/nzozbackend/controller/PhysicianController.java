@@ -16,7 +16,7 @@ import java.util.List;
 @CrossOrigin("*")
 public class PhysicianController {
 
-    PhysicianService physicianService;
+    private final  PhysicianService physicianService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createPhysician(@RequestBody PhysicianDto physicianDto) {
@@ -35,7 +35,7 @@ public class PhysicianController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping (value = "{taskId}")
+    @DeleteMapping (value = "{physicianId}")
     public ResponseEntity <Void> deletePhysician(@PathVariable Long physicianId) {
         physicianService.deletePhysicianById(physicianId);
         return ResponseEntity.ok().build();

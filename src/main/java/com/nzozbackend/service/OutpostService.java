@@ -2,6 +2,7 @@ package com.nzozbackend.service;
 
 import com.nzozbackend.domain.Dto.OutpostDto;
 import com.nzozbackend.domain.Outpost;
+import com.nzozbackend.domain.Patient;
 import com.nzozbackend.mapper.OutpostMapper;
 import com.nzozbackend.repository.OutpostRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,17 +14,22 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OutpostService {
     public final OutpostRepository outpostRepository;
-    OutpostMapper outpostMapper;
 
-    public  List<OutpostDto> findAllOutpostDto(){
-return    outpostMapper.mapToOutpostDtoList( outpostRepository.findAll());
+    public final OutpostMapper outpostMapper;
+
+    public List<OutpostDto> findAllOutpostDto() {
+        return outpostMapper.mapToOutpostDtoList(outpostRepository.findAll());
     }
 
-    public Outpost saveOutpostDto (OutpostDto outpostDto) {
+    public Outpost findOutpost(Long outpostId) {
+        return outpostRepository.findById(outpostId).get();
+    }
+
+    public Outpost saveOutpostDto(OutpostDto outpostDto) {
         return outpostRepository.save(outpostMapper.mapToOutpost(outpostDto));
     }
 
-    public void deleteOutpostById(final Long outpostId){
-       outpostRepository.deleteById(outpostId);
-    };
+    public void deleteOutpostById(final Long outpostId) {
+        outpostRepository.deleteById(outpostId);
+    }
 }

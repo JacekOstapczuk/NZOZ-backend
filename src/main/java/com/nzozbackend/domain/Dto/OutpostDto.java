@@ -1,17 +1,24 @@
 package com.nzozbackend.domain.Dto;
 
 import com.nzozbackend.domain.Visit;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@AllArgsConstructor
+@Data
+@NoArgsConstructor
 public class OutpostDto {
 
    private Long id;
-    private String City;
-    private List<Visit> Visit;
+    private String city;
+    private List<Visit> visits;
+
+    public OutpostDto (Long id,  String city,  List<Visit> visits){
+        this.id=id;
+        this.city=city;
+        this.visits = new ArrayList<>();
+    }
+
 }

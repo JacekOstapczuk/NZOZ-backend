@@ -5,12 +5,14 @@ import com.nzozbackend.domain.Patient;
 import com.nzozbackend.domain.Paymaster;
 import com.nzozbackend.domain.Physician;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Getter
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class VisitDto {
 
     private Long id;
@@ -18,5 +20,8 @@ public class VisitDto {
     private Patient patient;
     private Paymaster paymaster;
     private Outpost outpost;
-    private Date date;
+    private  Date date;
+
+
+
 }

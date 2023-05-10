@@ -18,30 +18,34 @@ import java.util.List;
 public class Patient {
 
     @Id
-    @NotNull
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue
     @Column(name = "ID", unique = true)
     private Long id;
 
     @NotNull
     @Column(name = "NAME")
-    private  String Name;
+    private  String name;
 
     @NotNull
     @Column(name = "SURMANE")
-    private  String Surname;
+    private  String surname;
 
     @NotNull
-    @Column(name = "PESEL")
-    private int PESEL;
+    @Column(name = "PESEL", unique = true)
+    private Integer pesel;
 
     @OneToMany(
             targetEntity = Visit.class,
             mappedBy = "patient",
-            cascade = CascadeType.REMOVE,
-            fetch = FetchType.EAGER
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
-    private List<Visit> Visit = new ArrayList<>();
+    private List<Visit> visits = new ArrayList<>();
+
+   public Patient( String name, String surname, Integer pesel) {
+        this.name = name;
+        this.surname = surname;
+        this.pesel = pesel;
+    }
 
 }

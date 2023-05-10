@@ -3,17 +3,23 @@ package com.nzozbackend.domain.Dto;
 import com.nzozbackend.domain.Visit;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@AllArgsConstructor
 @Data
+@NoArgsConstructor
+
 public class PaymasterDto {
 
     private Long id;
-    private String Name;
-    private List<Visit> Visit;
+    private String name;
+    private List<Visit> visits;
+
+    public PaymasterDto (Long id, String name, List<Visit> visits){
+        this.id=id;
+        this.name=name;
+        this.visits= new ArrayList<>();
+    }
 }

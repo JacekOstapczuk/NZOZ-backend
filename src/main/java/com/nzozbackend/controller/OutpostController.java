@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class OutpostController {
-    OutpostService outpostService;
+    private final   OutpostService outpostService;
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -35,7 +35,7 @@ public class OutpostController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping (value = "{taskId}")
+    @DeleteMapping (value = "{outpostId}")
     public ResponseEntity <Void> deleteOutpost( @PathVariable Long outpostId ) {
         outpostService.deleteOutpostById(outpostId);
         return ResponseEntity.ok().build();

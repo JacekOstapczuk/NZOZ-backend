@@ -2,17 +2,19 @@ package com.nzozbackend.mapper;
 
 import com.nzozbackend.domain.Dto.OutpostDto;
 import com.nzozbackend.domain.Outpost;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class OutpostMapper {
 
     public Outpost mapToOutpost (final OutpostDto outpostDto) {
         return new Outpost(
                 outpostDto.getId(),
                 outpostDto.getCity(),
-                outpostDto.getVisit()
+                outpostDto.getVisits()
         );
     }
 
@@ -20,7 +22,7 @@ public class OutpostMapper {
         return new OutpostDto(
                 outpost.getId(),
                 outpost.getCity(),
-                outpost.getVisit()
+                outpost.getVisits()
         );
     }
 

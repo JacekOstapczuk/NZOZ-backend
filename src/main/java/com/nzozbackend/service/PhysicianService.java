@@ -14,11 +14,16 @@ import java.util.List;
 public class PhysicianService {
 
     public final PhysicianRepository physicianRepository;
-    PhysicianMapper physicianMapper;
+    public final PhysicianMapper physicianMapper;
 
 
     public List<PhysicianDto> findAllPhysicianDto(){
         return     physicianMapper.mapToPhysicianDtoList( physicianRepository.findAll());
+    }
+
+    public Physician findPhysician(Long physicisId){
+        return  physicianRepository.findById(physicisId).get();
+
     }
 
     public Physician savePhysicianDto (PhysicianDto physicianDto) {

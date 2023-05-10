@@ -5,10 +5,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -18,34 +18,36 @@ import java.util.Date;
 public class Visit {
 
     @Id
-    @NotNull
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue
     @Column(name = "ID", unique = true)
     private Long id;
 
-   @ManyToOne
-    @NotNull
-   @JoinColumn(name = "PHYSICIAN_ID")
+
+    @ManyToOne
+    @JoinColumn(name = "PHYSICIAN_ID")
     private Physician physician;
 
-    @ManyToOne
-    @NotNull
-    @JoinColumn(name = "PATIENT_ID")
-    private Patient patient;
 
     @ManyToOne
-    @NotNull
+    @JoinColumn(name = "PATIENT_ID")
+    public Patient patient;
+
+
+    @ManyToOne
     @JoinColumn(name = "PAYMASTER_ID")
     private Paymaster paymaster;
 
+
     @ManyToOne
-    @NotNull
     @JoinColumn(name = "OUTPOST_ID")
     private Outpost outpost;
 
-    @NotNull
-    @Column(name = "DATE")
+    @Column(name = "DATE", unique = true)
     private Date date;
+
+    @NotNull
+    public Visit (Date date){
+        this.date=date;
+    }
 
 }

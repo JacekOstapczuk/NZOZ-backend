@@ -1,13 +1,14 @@
 package com.nzozbackend.mapper;
 
-import com.nzozbackend.domain.Dto.OutpostDto;
 import com.nzozbackend.domain.Dto.PatientDto;
-import com.nzozbackend.domain.Outpost;
 import com.nzozbackend.domain.Patient;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Service
 public class PatientMapper {
 
     public Patient mapToPatient (final PatientDto patientDto) {
@@ -15,8 +16,8 @@ public class PatientMapper {
                 patientDto.getId(),
                 patientDto.getName(),
                 patientDto.getSurname(),
-                patientDto.getPESEL(),
-                patientDto.getVisit()
+                patientDto.getPesel(),
+                patientDto.getVisits()
         );
     }
 
@@ -25,8 +26,8 @@ public class PatientMapper {
                 patient.getId(),
                 patient.getName(),
                 patient.getSurname(),
-                patient.getPESEL(),
-                patient.getVisit()
+                patient.getPesel(),
+                patient.getVisits()
         );
     }
 

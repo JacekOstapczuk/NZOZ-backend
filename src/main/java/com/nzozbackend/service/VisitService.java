@@ -14,11 +14,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VisitService {
     public final VisitRepository visitRepository;
-    VisitMapper visitMapper;
+    public final VisitMapper visitMapper;
 
 
     public List<VisitDto> findAllVisitDto(){
         return     visitMapper.mapToVisitDtoList( visitRepository.findAll());
+    }
+
+    public Visit findVisit (Long visitId){
+        return visitRepository.findById(visitId).get();
     }
 
     public Visit saveVisitDto (VisitDto visitDto) {

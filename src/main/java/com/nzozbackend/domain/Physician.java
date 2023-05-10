@@ -20,29 +20,27 @@ public class Physician {
 
 
     @Id
-    @NotNull
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue
     @Column(name = "ID", unique = true)
     private Long id;
 
     @NotNull
     @Column(name = "NAME")
-private String Name;
+    private String name;
 
     @NotNull
     @Column(name = "SURNAME")
-private  String Surname;
+    private String surname;
 
     @NotNull
-    @Column(name = "PWZ")
-private  int PWZ;
+    @Column(name = "PWZ", unique = true)
+    private Integer pwz;
 
     @OneToMany(
             targetEntity = Visit.class,
             mappedBy = "physician",
-            cascade = CascadeType.REMOVE,
-            fetch = FetchType.EAGER
+            cascade = CascadeType.MERGE,
+            fetch = FetchType.LAZY
     )
-    private List<Visit> Visit = new ArrayList<>();
+    private List<Visit> visits = new ArrayList<>();
 }

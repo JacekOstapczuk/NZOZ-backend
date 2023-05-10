@@ -1,22 +1,21 @@
 package com.nzozbackend.mapper;
 
-import com.nzozbackend.domain.Dto.OutpostDto;
-import com.nzozbackend.domain.Dto.PatientDto;
 import com.nzozbackend.domain.Dto.PaymasterDto;
-import com.nzozbackend.domain.Outpost;
-import com.nzozbackend.domain.Patient;
 import com.nzozbackend.domain.Paymaster;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class PaymasterMapper {
 
     public Paymaster mapToPaymaster (final PaymasterDto paymasterDto) {
         return new  Paymaster(
                 paymasterDto.getId(),
                 paymasterDto.getName(),
-                paymasterDto.getVisit()
+               paymasterDto.getVisits()
         );
     }
 
@@ -24,7 +23,7 @@ public class PaymasterMapper {
         return new  PaymasterDto(
                 paymaster.getId(),
                 paymaster.getName(),
-                paymaster.getVisit()
+              paymaster.getVisits()
                 );
     }
 
