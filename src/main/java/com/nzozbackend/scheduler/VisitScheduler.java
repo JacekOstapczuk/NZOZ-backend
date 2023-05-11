@@ -14,7 +14,6 @@ public class VisitScheduler {
     private final VisitRepository visitRepository;
 
 
-
    @Scheduled(cron = " * * 7 * * MON-FRI")
     public void sendInformationEmail() {
         long size =visitRepository.count();
