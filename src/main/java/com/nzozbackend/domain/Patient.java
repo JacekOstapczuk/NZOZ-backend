@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class Patient {
     private  String name;
 
     @NotNull
-    @Column(name = "SURMANE")
+    @Column(name = "SURNAME")
     private  String surname;
 
     @NotNull

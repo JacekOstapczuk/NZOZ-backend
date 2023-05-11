@@ -1,6 +1,5 @@
 package com.nzozbackend.domain;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
-
 
 @Data
 @AllArgsConstructor
@@ -22,21 +20,17 @@ public class Visit {
     @Column(name = "ID", unique = true)
     private Long id;
 
-
     @ManyToOne
     @JoinColumn(name = "PHYSICIAN_ID")
     private Physician physician;
-
 
     @ManyToOne
     @JoinColumn(name = "PATIENT_ID")
     public Patient patient;
 
-
     @ManyToOne
     @JoinColumn(name = "PAYMASTER_ID")
     private Paymaster paymaster;
-
 
     @ManyToOne
     @JoinColumn(name = "OUTPOST_ID")
@@ -49,5 +43,4 @@ public class Visit {
     public Visit (Date date){
         this.date=date;
     }
-
 }
