@@ -1,6 +1,7 @@
 package com.nzozbackend.service;
 
 import com.nzozbackend.domain.Dto.VisitDto;
+import com.nzozbackend.domain.Outpost;
 import com.nzozbackend.domain.Visit;
 import com.nzozbackend.mapper.VisitMapper;
 import com.nzozbackend.repository.VisitRepository;
@@ -32,4 +33,6 @@ public class VisitService {
     public void deleteVisitById(final Long visitId){
         visitRepository.deleteById(visitId);
     };
+
+
 }

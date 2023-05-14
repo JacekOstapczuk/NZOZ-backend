@@ -1,6 +1,5 @@
 package com.nzozbackend.domain;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +16,6 @@ import java.util.List;
 @Entity
 @Table(name = "PHYSICIANS")
 public class Physician {
-
 
     @Id
     @GeneratedValue

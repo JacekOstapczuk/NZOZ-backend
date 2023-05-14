@@ -17,7 +17,11 @@ public class VisitMapper {
                 visitDto.getPatient(),
                 visitDto.getPaymaster(),
                 visitDto.getOutpost(),
-                visitDto.getDate()
+                visitDto.getDate(),
+                visitDto.getVisitName(),
+                visitDto.getVisitDuration(),
+                visitDto.getPrice(),
+                visitDto.getDescription()
         );
     }
 
@@ -28,7 +32,11 @@ public class VisitMapper {
                 visit.getPatient(),
                 visit.getPaymaster(),
                 visit.getOutpost(),
-                visit.getDate()
+                visit.getDate(),
+                visit.getVisitName(),
+                visit.getVisitDuration(),
+                visit.getPrice(),
+                visit.getDescription()
         );
     }
 

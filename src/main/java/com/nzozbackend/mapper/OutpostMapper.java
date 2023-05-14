@@ -14,6 +14,7 @@ public class OutpostMapper {
         return new Outpost(
                 outpostDto.getId(),
                 outpostDto.getCity(),
+                outpostDto.getAdministrator(),
                 outpostDto.getVisits()
         );
     }
@@ -22,6 +23,7 @@ public class OutpostMapper {
         return new OutpostDto(
                 outpost.getId(),
                 outpost.getCity(),
+                outpost.getAdministrator(),
                 outpost.getVisits()
         );
     }
@@ -31,5 +33,4 @@ public class OutpostMapper {
                 .map(this::mapToOutpostDto)
                 .collect(Collectors.toList());
     }
-
 }

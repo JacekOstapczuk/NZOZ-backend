@@ -1,6 +1,5 @@
 package com.nzozbackend.domain;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "OUTPOSTS")
-public class Outpost {
+public class Outpost  {
 
     @Id
     @GeneratedValue
@@ -26,6 +25,10 @@ public class Outpost {
     @Column(name = "CITY")
     private String city;
 
+    @NotNull
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "Administrator_ID")
+    private Administrator administrator;
 
     @OneToMany(
             targetEntity = Visit.class,
