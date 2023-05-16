@@ -3,7 +3,7 @@ package com.nzozbackend.domain.VisitSettings;
 import java.math.BigDecimal;
 
 public class VisitSettlementLungs extends AbstractVisitSettlementDecorator {
-    public VisitSettlementLungs( VisitSettlement visitSettlement) {
+    public VisitSettlementLungs(VisitSettlement visitSettlement) {
         super(visitSettlement);
     }
 

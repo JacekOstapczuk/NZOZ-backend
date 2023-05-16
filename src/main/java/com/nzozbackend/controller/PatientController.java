@@ -21,29 +21,29 @@ public class PatientController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createPatient(@RequestBody PatientDto patientDto) {
-     patientService.savePatientDto(patientDto);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping
-    public ResponseEntity <List<PatientDto>> getPatients() {
-       return ResponseEntity.ok( patientService.findAllPatientDto());
-    }
-
-
-    @GetMapping (value = "{patientId}")
-    public ResponseEntity <PatientDto> getPatient(@PathVariable Long patientId) {
-        return ResponseEntity.ok( patientService.findPatientDto(patientId));
-    }
-
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity  <Void> updatePatient( @RequestBody  PatientDto patientDto ) {
         patientService.savePatientDto(patientDto);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping (value = "{patientId}")
-    public ResponseEntity <Void> deletePatient( @PathVariable Long patientId ) {
+    @GetMapping
+    public ResponseEntity<List<PatientDto>> getPatients() {
+        return ResponseEntity.ok(patientService.findAllPatientDto());
+    }
+
+
+    @GetMapping(value = "{patientId}")
+    public ResponseEntity<PatientDto> getPatient(@PathVariable Long patientId) {
+        return ResponseEntity.ok(patientService.findPatientDto(patientId));
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> updatePatient(@RequestBody PatientDto patientDto) {
+        patientService.savePatientDto(patientDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping(value = "{patientId}")
+    public ResponseEntity<Void> deletePatient(@PathVariable Long patientId) {
         patientService.deletePatientById(patientId);
         return ResponseEntity.ok().build();
     }

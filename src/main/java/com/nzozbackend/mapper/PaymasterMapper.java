@@ -11,20 +11,20 @@ import java.util.stream.Collectors;
 @Component
 public class PaymasterMapper {
 
-    public Paymaster mapToPaymaster (final PaymasterDto paymasterDto) {
-        return new  Paymaster(
+    public Paymaster mapToPaymaster(final PaymasterDto paymasterDto) {
+        return new Paymaster(
                 paymasterDto.getId(),
                 paymasterDto.getName(),
-               paymasterDto.getVisits()
+                paymasterDto.getVisits()
         );
     }
 
-    public PaymasterDto mapToPaymasterDto (final Paymaster paymaster) {
-        return new  PaymasterDto(
+    public PaymasterDto mapToPaymasterDto(final Paymaster paymaster) {
+        return new PaymasterDto(
                 paymaster.getId(),
                 paymaster.getName(),
-              paymaster.getVisits()
-                );
+                paymaster.getVisits()
+        );
     }
 
     public List<PaymasterDto> mapToPaymasterDtoList(final List<Paymaster> paymasterList) {

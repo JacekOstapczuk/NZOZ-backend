@@ -9,7 +9,7 @@ public class VisitSettlementBasic implements VisitSettlement {
 
     @Override
     public BigDecimal getCost() {
-        return new BigDecimal(100.00);
+        return new BigDecimal("100.00");
     }
 
     @Override

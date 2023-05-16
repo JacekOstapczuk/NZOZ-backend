@@ -1,6 +1,5 @@
 package com.nzozbackend.domain;
 
-import com.nzozbackend.domain.VisitSettings.VisitSettlementBasic;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +8,8 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 @Component
 @Data
@@ -18,7 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "VISITS")
-public class Visit  {
+public class Visit {
 
     @Id
     @GeneratedValue
@@ -31,7 +30,7 @@ public class Visit  {
 
     @ManyToOne
     @JoinColumn(name = "PATIENT_ID")
-    public Patient patient;
+    private Patient patient;
 
     @ManyToOne
     @JoinColumn(name = "PAYMASTER_ID")
@@ -42,7 +41,7 @@ public class Visit  {
     private Outpost outpost;
 
     @Column(name = "DATE")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "VISIT_NAME")
     private String visitName;
@@ -58,7 +57,7 @@ public class Visit  {
     private String description;
 
     @NotNull
-    public Visit(Date date) {
+    public Visit(LocalDate date) {
         this.date = date;
     }
 }

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -40,5 +39,5 @@ public class Physician {
             cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY
     )
-    private List<Visit> visits = new ArrayList<>();
+    public List<Visit> visits = new ArrayList<>();
 }

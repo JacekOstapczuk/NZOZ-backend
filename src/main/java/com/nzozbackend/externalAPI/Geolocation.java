@@ -9,10 +9,9 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Slf4j
-public class Geolocation  {
+public class Geolocation {
 
-    public void httRequest() throws  Exception{
-
+    public void httRequest() throws Exception {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://wft-geo-db.p.rapidapi.com/v1/geo/adminDivisions?location=Olsztyn"))
@@ -22,9 +21,10 @@ public class Geolocation  {
                 .build();
 
         try {
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
-        } catch(IOException e) {log.error("Failed to process HttpResponse: " + e.getMessage(), e);}
+            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.body());
+        } catch (IOException e) {
+            log.error("Failed to process HttpResponse: " + e.getMessage(), e);
+        }
     }
-
 }

@@ -1,6 +1,5 @@
 package com.nzozbackend.repository;
 
-import com.nzozbackend.domain.Physician;
 import com.nzozbackend.domain.Visit;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -18,6 +17,7 @@ public interface VisitRepository extends CrudRepository<Visit, Long> {
     List<Visit> findAll();
 
     Optional<Visit> findById(Long id);
+
     @Override
     Visit save(Visit visit);
 

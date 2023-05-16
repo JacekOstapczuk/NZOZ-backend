@@ -1,14 +1,14 @@
 package com.nzozbackend.controller;
 
 
-import com.nzozbackend.domain.*;
 import com.nzozbackend.domain.Dto.VisitDto;
-import com.nzozbackend.domain.Dto.VisitTypeDto;
-import com.nzozbackend.domain.VisitSettings.*;
+import com.nzozbackend.domain.*;
+import com.nzozbackend.domain.VisitSettings.VisitSettlementBasic;
+import com.nzozbackend.domain.VisitSettings.VisitSettlementConfig;
+import com.nzozbackend.domain.VisitSettings.VisitType;
 import com.nzozbackend.mapper.VisitMapper;
 import com.nzozbackend.service.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,15 +27,15 @@ public class VisitController {
     public final OutpostService outpostService;
     private final VisitMapper visitMapper;
     private static VisitType setVisitType;
-    private  final VisitSettlementBasic visitSettlementBasic;
+    private final VisitSettlementBasic visitSettlementBasic;
 
-   // private final  VisitSettlementCardio visitSettlementCardio;
+    // private final  VisitSettlementCardio visitSettlementCardio;
 
-  //  private  final VisitSettlementLungs visitSettlementLungs;
+    //  private  final VisitSettlementLungs visitSettlementLungs;
 
- //   private  final VisitSettlementProstate visitSettlementProstate;
+    //   private  final VisitSettlementProstate visitSettlementProstate;
 
-    private  final VisitSettlementConfig visitSettlementConfig;
+    private final VisitSettlementConfig visitSettlementConfig;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createVisit(@RequestBody VisitDto visitDto) {
@@ -95,7 +95,7 @@ public class VisitController {
     }
 
     @PutMapping(value = "{visitId}/addVisitType/{visitType}")
-    public ResponseEntity< VisitDto> addVisitType(@PathVariable Long visitId, @PathVariable String visitType ) {
+    public ResponseEntity<VisitDto> addVisitType(@PathVariable Long visitId, @PathVariable String visitType) {
         Visit modifiedVisit = visitService.findVisit(visitId);
 
         switch (visitType) {
@@ -116,8 +116,8 @@ public class VisitController {
             }
         }
 
-            return ResponseEntity.ok().build();
-        }
+        return ResponseEntity.ok().build();
+    }
 
     @PutMapping(value = "{visitId}/addVisitSettlement/{visitSettlement}")
     public ResponseEntity<Void> addVisitSettlement(@PathVariable Long visitId, @PathVariable String visitSettlement) {
@@ -125,19 +125,18 @@ public class VisitController {
 
         switch (visitSettlement) {
             case "Cardio":
-                modifiedVisit.setDescription( visitSettlementConfig.visitSettlementCardio().getDescription());
-                modifiedVisit.setPrice( visitSettlementConfig.visitSettlementCardio().getCost());
+                modifiedVisit.setDescription(visitSettlementConfig.visitSettlementCardio().getDescription());
+                modifiedVisit.setPrice(visitSettlementConfig.visitSettlementCardio().getCost());
             case "Lungs":
-              modifiedVisit.setDescription(visitSettlementConfig.visitSettlementLungs().getDescription());
-               modifiedVisit.setPrice(visitSettlementConfig.visitSettlementLungs().getCost());
+                modifiedVisit.setDescription(visitSettlementConfig.visitSettlementLungs().getDescription());
+                modifiedVisit.setPrice(visitSettlementConfig.visitSettlementLungs().getCost());
             case "Prostate":
-               modifiedVisit.setDescription(visitSettlementConfig.visitSettlementProstate().getDescription());
-               modifiedVisit.setPrice(visitSettlementConfig.visitSettlementProstate().getCost());
+                modifiedVisit.setDescription(visitSettlementConfig.visitSettlementProstate().getDescription());
+                modifiedVisit.setPrice(visitSettlementConfig.visitSettlementProstate().getCost());
         }
         visitService.saveVisitDto(visitMapper.mapToVisitDto(modifiedVisit));
         return ResponseEntity.ok().build();
     }
-
 
 
     @DeleteMapping(value = "{visitId}")

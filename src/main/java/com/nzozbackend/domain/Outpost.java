@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "OUTPOSTS")
-public class Outpost  {
+public class Outpost {
 
     @Id
     @GeneratedValue
@@ -36,5 +36,5 @@ public class Outpost  {
             cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY
     )
-   private List<Visit> visits = new ArrayList<>();
+    private List<Visit> visits = new ArrayList<>();
 }

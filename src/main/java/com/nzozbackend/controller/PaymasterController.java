@@ -2,7 +2,6 @@ package com.nzozbackend.controller;
 
 
 import com.nzozbackend.domain.Dto.PaymasterDto;
-import com.nzozbackend.repository.PaymasterRepository;
 import com.nzozbackend.service.PaymasterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -16,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class PaymasterController {
-    private final  PaymasterService paymasterService;
+    private final PaymasterService paymasterService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createPaymaster(@RequestBody PaymasterDto paymasterDto) {
@@ -25,18 +24,18 @@ public class PaymasterController {
     }
 
     @GetMapping
-    public ResponseEntity <List<PaymasterDto>> getPaymasters() {
+    public ResponseEntity<List<PaymasterDto>> getPaymasters() {
         return ResponseEntity.ok(paymasterService.findAllPaymasterDto());
     }
 
     @PutMapping
-    public ResponseEntity <Void> updatePaymaster( @RequestBody PaymasterDto paymasterDto  ) {
+    public ResponseEntity<Void> updatePaymaster(@RequestBody PaymasterDto paymasterDto) {
         paymasterService.savePaymasterDto(paymasterDto);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping (value = "{paymasterId}")
-    public ResponseEntity <Void> deletePaymaster( @PathVariable Long paymasterId) {
+    @DeleteMapping(value = "{paymasterId}")
+    public ResponseEntity<Void> deletePaymaster(@PathVariable Long paymasterId) {
         paymasterService.deletePaymasterById(paymasterId);
         return ResponseEntity.ok().build();
     }

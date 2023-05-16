@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 
 public class VisitSettlementProstate extends AbstractVisitSettlementDecorator {
-    public VisitSettlementProstate( VisitSettlement visitSettlement) {
+    public VisitSettlementProstate(VisitSettlement visitSettlement) {
         super(visitSettlement);
     }
 

@@ -1,7 +1,6 @@
 package com.nzozbackend.domain.Dto;
 
 import com.nzozbackend.domain.Visit;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,14 +15,13 @@ public class PatientDto {
     private String name;
     private String surname;
     private Integer pesel;
- private List<Visit> visits;
+    private List<Visit> visits;
 
-
-   public PatientDto(Long id, String name, String surname, Integer pesel, List<Visit> visits ) {
-       this.id=id;
+    public PatientDto(Long id, String name, String surname, Integer pesel, List<Visit> visits) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.pesel = pesel;
-        this.visits= new ArrayList<>();
+        this.visits = new ArrayList<>();
     }
 }

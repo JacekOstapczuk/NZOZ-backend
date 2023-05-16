@@ -11,24 +11,24 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class SimpleEmail {
-        private final JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender;
 
-        public void send(final DailyVisitSummaryMail dailyVisitSummaryMail) {
+    public void send(final DailyVisitSummaryMail dailyVisitSummaryMail) {
 
-            try {
-                SimpleMailMessage mailMessage = createMailMessage(dailyVisitSummaryMail);
-                javaMailSender.send(mailMessage);
+        try {
+            SimpleMailMessage mailMessage = createMailMessage(dailyVisitSummaryMail);
+            javaMailSender.send(mailMessage);
 
-            } catch (MailException e) {
-                log.error("Failed to process email sending: " + e.getMessage(), e);
-            }
-        }
-
-        private SimpleMailMessage createMailMessage(final DailyVisitSummaryMail dailyVisitSummaryMail) {
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setTo(dailyVisitSummaryMail.getMailTo());
-            mailMessage.setSubject(dailyVisitSummaryMail.getSubject());
-            mailMessage.setText(dailyVisitSummaryMail.getMessage());
-            return mailMessage;
+        } catch (MailException e) {
+            log.error("Failed to process email sending: " + e.getMessage(), e);
         }
     }
+
+    private SimpleMailMessage createMailMessage(final DailyVisitSummaryMail dailyVisitSummaryMail) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(dailyVisitSummaryMail.getMailTo());
+        mailMessage.setSubject(dailyVisitSummaryMail.getSubject());
+        mailMessage.setText(dailyVisitSummaryMail.getMessage());
+        return mailMessage;
+    }
+}

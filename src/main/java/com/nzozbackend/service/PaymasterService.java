@@ -1,6 +1,5 @@
 package com.nzozbackend.service;
 
-import com.nzozbackend.domain.Dto.PatientDto;
 import com.nzozbackend.domain.Dto.PaymasterDto;
 import com.nzozbackend.domain.Paymaster;
 import com.nzozbackend.mapper.PaymasterMapper;
@@ -18,23 +17,24 @@ public class PaymasterService {
     public final PaymasterMapper paymasterMapper;
 
 
-    public List<PaymasterDto> findAllPaymasterDto(){
-        return     paymasterMapper.mapToPaymasterDtoList( paymasterRepository.findAll());
+    public List<PaymasterDto> findAllPaymasterDto() {
+        return paymasterMapper.mapToPaymasterDtoList(paymasterRepository.findAll());
     }
 
-    public PaymasterDto findPaymasterDto (Long paymasterId){
+    public PaymasterDto findPaymasterDto(Long paymasterId) {
         return paymasterMapper.mapToPaymasterDto(paymasterRepository.findById(paymasterId).get());
     }
 
-    public Paymaster findPaymaster (Long paymasterId){
+    public Paymaster findPaymaster(Long paymasterId) {
         return paymasterRepository.findById(paymasterId).get();
     }
 
-    public Paymaster savePaymasterDto (PaymasterDto paymasterDto) {
-        return paymasterRepository.save( paymasterMapper.mapToPaymaster(paymasterDto));
+    public Paymaster savePaymasterDto(PaymasterDto paymasterDto) {
+        return paymasterRepository.save(paymasterMapper.mapToPaymaster(paymasterDto));
     }
 
-    public void deletePaymasterById(final Long paymasterId){
+    public void deletePaymasterById(final Long paymasterId) {
         paymasterRepository.deleteById(paymasterId);
-    };
+    }
+
 }

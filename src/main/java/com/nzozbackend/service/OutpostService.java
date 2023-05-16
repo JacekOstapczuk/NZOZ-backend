@@ -2,7 +2,6 @@ package com.nzozbackend.service;
 
 import com.nzozbackend.domain.Dto.OutpostDto;
 import com.nzozbackend.domain.Outpost;
-import com.nzozbackend.domain.Patient;
 import com.nzozbackend.mapper.OutpostMapper;
 import com.nzozbackend.repository.OutpostRepository;
 import lombok.RequiredArgsConstructor;

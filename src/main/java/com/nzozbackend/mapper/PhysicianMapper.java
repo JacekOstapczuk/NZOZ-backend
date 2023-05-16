@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 public class PhysicianMapper {
 
 
-    public Physician mapToPhysician (final PhysicianDto physicianDto) {
-        return new   Physician(
+    public Physician mapToPhysician(final PhysicianDto physicianDto) {
+        return new Physician(
                 physicianDto.getId(),
                 physicianDto.getName(),
                 physicianDto.getSurname(),
@@ -22,8 +22,8 @@ public class PhysicianMapper {
         );
     }
 
-    public PhysicianDto mapToPhysicianDto (final Physician physician) {
-        return new   PhysicianDto(
+    public PhysicianDto mapToPhysicianDto(final Physician physician) {
+        return new PhysicianDto(
                 physician.getId(),
                 physician.getName(),
                 physician.getSurname(),
@@ -34,7 +34,7 @@ public class PhysicianMapper {
 
     public List<PhysicianDto> mapToPhysicianDtoList(final List<Physician> physicianList) {
         return physicianList.stream()
-                .map(this::mapToPhysicianDto )
+                .map(this::mapToPhysicianDto)
                 .collect(Collectors.toList());
     }
 }

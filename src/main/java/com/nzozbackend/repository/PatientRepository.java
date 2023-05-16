@@ -1,7 +1,6 @@
 package com.nzozbackend.repository;
 
 import com.nzozbackend.domain.Patient;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,17 +12,17 @@ import java.util.Optional;
 @Repository
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
-        @Override
-        List<Patient> findAll();
+    @Override
+    List<Patient> findAll();
 
 
-        Optional <Patient> findById(Long id);
+    Optional<Patient> findById(Long id);
 
-        @Override
-        Patient save( Patient patient);
+    @Override
+    Patient save(Patient patient);
 
-        @Override
-        void deleteById(Long id);
+    @Override
+    void deleteById(Long id);
 
-        }
+}
 

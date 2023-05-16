@@ -17,20 +17,20 @@ public class PhysicianService {
     public final PhysicianMapper physicianMapper;
 
 
-    public List<PhysicianDto> findAllPhysicianDto(){
-        return     physicianMapper.mapToPhysicianDtoList( physicianRepository.findAll());
+    public List<PhysicianDto> findAllPhysicianDto() {
+        return physicianMapper.mapToPhysicianDtoList(physicianRepository.findAll());
     }
 
-    public Physician findPhysician(Long physicisId){
-        return  physicianRepository.findById(physicisId).get();
+    public Physician findPhysician(Long physicisId) {
+        return physicianRepository.findById(physicisId).get();
 
     }
 
-    public Physician savePhysicianDto (PhysicianDto physicianDto) {
-        return physicianRepository.save( physicianMapper.mapToPhysician(physicianDto));
+    public Physician savePhysicianDto(PhysicianDto physicianDto) {
+        return physicianRepository.save(physicianMapper.mapToPhysician(physicianDto));
     }
 
-    public void deletePhysicianById(final Long physicianId){
+    public void deletePhysicianById(final Long physicianId) {
         physicianRepository.deleteById(physicianId);
     }
 }

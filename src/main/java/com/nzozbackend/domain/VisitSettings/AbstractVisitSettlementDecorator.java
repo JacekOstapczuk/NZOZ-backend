@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 public class AbstractVisitSettlementDecorator implements VisitSettlement {
     private final VisitSettlement visitSettlement;
 
-    protected AbstractVisitSettlementDecorator (VisitSettlement visitSettlement){
-        this.visitSettlement=visitSettlement;
+    protected AbstractVisitSettlementDecorator(VisitSettlement visitSettlement) {
+        this.visitSettlement = visitSettlement;
     }
 
     @Override

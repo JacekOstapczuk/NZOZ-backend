@@ -16,7 +16,7 @@ import java.util.List;
 @CrossOrigin("*")
 public class PhysicianController {
 
-    private final  PhysicianService physicianService;
+    private final PhysicianService physicianService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createPhysician(@RequestBody PhysicianDto physicianDto) {
@@ -25,18 +25,18 @@ public class PhysicianController {
     }
 
     @GetMapping
-    public ResponseEntity <List<PhysicianDto>> getPhysicians() {
+    public ResponseEntity<List<PhysicianDto>> getPhysicians() {
         return ResponseEntity.ok(physicianService.findAllPhysicianDto());
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity <Void>updatePhysician(@RequestBody PhysicianDto physicianDto  ) {
+    public ResponseEntity<Void> updatePhysician(@RequestBody PhysicianDto physicianDto) {
         physicianService.savePhysicianDto(physicianDto);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping (value = "{physicianId}")
-    public ResponseEntity <Void> deletePhysician(@PathVariable Long physicianId) {
+    @DeleteMapping(value = "{physicianId}")
+    public ResponseEntity<Void> deletePhysician(@PathVariable Long physicianId) {
         physicianService.deletePhysicianById(physicianId);
         return ResponseEntity.ok().build();
     }

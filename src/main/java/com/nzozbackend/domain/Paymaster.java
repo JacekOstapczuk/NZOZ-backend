@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import java.util.List;
 @Entity
 @Table(name = "PAYMASTER")
 public class Paymaster {
-
 
     @Id
     @GeneratedValue
@@ -33,5 +31,5 @@ public class Paymaster {
             cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY
     )
-    private List<Visit> visits = new ArrayList<>();
+    public List<Visit> visits = new ArrayList<>();
 }

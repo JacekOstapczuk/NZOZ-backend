@@ -20,5 +20,5 @@ public class Administrator {
 
     @NotNull
     @Column(name = "SURNAME")
-    private  String surname;
+    private String surname;
 }

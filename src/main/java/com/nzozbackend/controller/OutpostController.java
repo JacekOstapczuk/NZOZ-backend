@@ -15,28 +15,28 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class OutpostController {
-    private final   OutpostService outpostService;
+    private final OutpostService outpostService;
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity <Void> createOutpost(@RequestBody OutpostDto outpostDto) {
+    public ResponseEntity<Void> createOutpost(@RequestBody OutpostDto outpostDto) {
         outpostService.saveOutpostDto(outpostDto);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity <List<OutpostDto>> getOutposts() {
+    public ResponseEntity<List<OutpostDto>> getOutposts() {
         return ResponseEntity.ok(outpostService.findAllOutpostDto());
     }
 
-    @PutMapping (consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity <Void> updateOutpost( @RequestBody  OutpostDto outpostDto) {
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> updateOutpost(@RequestBody OutpostDto outpostDto) {
         outpostService.saveOutpostDto(outpostDto);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping (value = "{outpostId}")
-    public ResponseEntity <Void> deleteOutpost( @PathVariable Long outpostId ) {
+    @DeleteMapping(value = "{outpostId}")
+    public ResponseEntity<Void> deleteOutpost(@PathVariable Long outpostId) {
         outpostService.deleteOutpostById(outpostId);
         return ResponseEntity.ok().build();
     }

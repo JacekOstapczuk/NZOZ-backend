@@ -23,11 +23,11 @@ public class Patient {
 
     @NotNull
     @Column(name = "NAME")
-    private  String name;
+    private String name;
 
     @NotNull
     @Column(name = "SURNAME")
-    private  String surname;
+    private String surname;
 
     @NotNull
     @Column(name = "PESEL", unique = true)
@@ -41,10 +41,9 @@ public class Patient {
     )
     private List<Visit> visits = new ArrayList<>();
 
-   public Patient( String name, String surname, Integer pesel) {
+    public Patient(String name, String surname, Integer pesel) {
         this.name = name;
         this.surname = surname;
         this.pesel = pesel;
     }
-
 }

@@ -3,7 +3,7 @@ package com.nzozbackend.domain.VisitSettings;
 import java.math.BigDecimal;
 
 public class VisitSettlementCardio extends AbstractVisitSettlementDecorator {
-    public VisitSettlementCardio(  VisitSettlement visitSettlement) {
+    public VisitSettlementCardio(VisitSettlement visitSettlement) {
         super(visitSettlement);
     }
 

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Component
 public class OutpostMapper {
 
-    public Outpost mapToOutpost (final OutpostDto outpostDto) {
+    public Outpost mapToOutpost(final OutpostDto outpostDto) {
         return new Outpost(
                 outpostDto.getId(),
                 outpostDto.getCity(),
@@ -19,7 +19,7 @@ public class OutpostMapper {
         );
     }
 
-    public OutpostDto mapToOutpostDto (final Outpost outpost) {
+    public OutpostDto mapToOutpostDto(final Outpost outpost) {
         return new OutpostDto(
                 outpost.getId(),
                 outpost.getCity(),
@@ -29,7 +29,7 @@ public class OutpostMapper {
     }
 
     public List<OutpostDto> mapToOutpostDtoList(final List<Outpost> outpostsList) {
-        return  outpostsList.stream()
+        return outpostsList.stream()
                 .map(this::mapToOutpostDto)
                 .collect(Collectors.toList());
     }

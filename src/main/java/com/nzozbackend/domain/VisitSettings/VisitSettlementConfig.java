@@ -10,17 +10,17 @@ public class VisitSettlementConfig {
     public final VisitSettlement visitSettlement;
 
     @Bean
-    public VisitSettlementCardio visitSettlementCardio(){
+    public VisitSettlementCardio visitSettlementCardio() {
         return new VisitSettlementCardio(visitSettlement);
     }
 
     @Bean
-    public VisitSettlementLungs visitSettlementLungs(){
+    public VisitSettlementLungs visitSettlementLungs() {
         return new VisitSettlementLungs(visitSettlement);
     }
 
     @Bean
-    public VisitSettlementProstate visitSettlementProstate(){
+    public VisitSettlementProstate visitSettlementProstate() {
         return new VisitSettlementProstate(visitSettlement);
     }
 
