@@ -1,0 +1,9 @@
+1) Projekt Backendowy bez projektu Frontendowego ani mikroserwerów.
+Ma umożliwiać zapisywanie się na wizyty do lekarza w przychodni.
+
+2) Komendy obsugujące zapis danych z poziomu bazy danych znajdują się w pliku resouce/SQL commendy. 
+  Należy je wgrać po pierwszym uruchomieniu a przed pierwszym zapisem danych.
+  
+3) projekt nie ma zrobionych testów, na ten moment nie mogę rozgryźć dlaczego nie wzraca mi body w controllerach
+
+4) Projekt będdzie rozbudowywany.
