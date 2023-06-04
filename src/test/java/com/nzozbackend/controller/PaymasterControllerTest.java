@@ -4,12 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.nzozbackend.LocalDateTypeAdapter;
 import com.nzozbackend.LocalTimeTypeAdapter;
-import com.nzozbackend.domain.Administrator;
-import com.nzozbackend.domain.Dto.OutpostDto;
+import com.nzozbackend.domain.Dto.PaymasterDto;
 import com.nzozbackend.domain.Visit;
-import com.nzozbackend.mapper.OutpostMapper;
-import com.nzozbackend.repository.OutpostRepository;
-import com.nzozbackend.service.OutpostService;
+import com.nzozbackend.service.PaymasterService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,39 +23,36 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringJUnitWebConfig
-@WebMvcTest(OutpostController.class)
-class OutpostControllerTest {
+@WebMvcTest(PaymasterController.class)
+class PaymasterControllerTest {
 
     @Autowired
     public MockMvc mockMvc;
     @MockBean
-    public OutpostService outpostService;
+    public PaymasterController paymasterController;
     @MockBean
-    public OutpostRepository outpostRepository;
-    @MockBean
-    public OutpostController outpostController;
-    @MockBean
-    public OutpostMapper outpostMapper;
+    public PaymasterService paymasterService;
+
 
     @Test
-    public void testCreateOutpost() throws Exception {
+    public void testCreatePaymaster() throws Exception {
         //Given
-        List<Visit> visitList = new ArrayList<Visit>();
-        OutpostDto outpostDto = new OutpostDto(1L, "Warsaw", new Administrator(1l, "Tomek"), visitList);
-
+        List<Visit> visit = new ArrayList<>();
+        PaymasterDto paymasterDto = new PaymasterDto(1L, "NFZ", visit);
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
                 .registerTypeAdapter(LocalTime.class, new LocalTimeTypeAdapter())
                 .create();
-        String gsoncontent = gson.toJson(outpostDto);
+        String gsoncontent = gson.toJson(paymasterDto);
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/nzoz/outpost")
+                        .post("/nzoz/paymaster")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
@@ -66,44 +60,40 @@ class OutpostControllerTest {
     }
 
     @Test
-    public void testGetOutposts() throws Exception {
+    public void testGetPaymasters() throws Exception {
         //Given
-        Visit visit = new Visit();
-        List<Visit> visitList = new ArrayList<Visit>();
-        visitList.add(visit);
-        OutpostDto outpostDto1 = new OutpostDto(1L, "Warsaw", new Administrator(1L, "Tomek"), visitList);
-        OutpostDto outpostDto2 = new OutpostDto(2L, "Gdansk", new Administrator(2L, "Romek"), visitList);
-        List<OutpostDto> outpostDtoList = new ArrayList<>();
-        outpostDtoList.add(outpostDto1);
-        outpostDtoList.add(outpostDto2);
-        when(outpostService.findAllOutpostDto()).thenReturn(outpostDtoList);
+       PaymasterDto paymasterDto1 = new PaymasterDto();
+        PaymasterDto paymasterDto2 =  new PaymasterDto();
+        List<PaymasterDto> paymasterDtoList = new ArrayList<>();
+        paymasterDtoList.add(paymasterDto1);
+        paymasterDtoList.add(paymasterDto2);
+
+        when(paymasterService.findAllPaymasterDto()).thenReturn(paymasterDtoList);
+
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/nzoz/outpost")
+                        .get("/nzoz/paymaster")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
     }
 
     @Test
-    public void testUpdateOutpost() throws Exception {
-//Given
-        List<Visit> visitList = new ArrayList<Visit>();
-        OutpostDto outpostDto1 = new OutpostDto(1L, "Warsaw", new Administrator(1L, "Tomek"), visitList);
-        OutpostDto outpostDto2 = new OutpostDto(2L, "Gdansk", new Administrator(2L, "Romek"), visitList);
-        outpostRepository.save(outpostMapper.mapToOutpost(outpostDto1));
-
+    public void testUpdatePaymaster() throws Exception {
+        //Given
+        List<Visit> visit = new ArrayList<>();
+        PaymasterDto paymasterDto = new PaymasterDto(1L, "NFZ-Lublin", visit);
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
                 .registerTypeAdapter(LocalTime.class, new LocalTimeTypeAdapter())
                 .create();
-        String gsoncontent = gson.toJson(outpostDto2);
+        String gsoncontent = gson.toJson(paymasterDto);
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/nzoz/outpost")
+                        .put("/nzoz/paymaster")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
@@ -111,19 +101,25 @@ class OutpostControllerTest {
     }
 
     @Test
-    public void testDeleteOutpost() throws Exception {
+    public void testDeletePaymaster() throws Exception {
         //Given
-        List<Visit> visitList = new ArrayList<Visit>();
-        OutpostDto outpostDto1 = new OutpostDto(1L, "Warsaw", new Administrator(1L, "Tomek"), visitList);
-        OutpostDto outpostDto2 = new OutpostDto(2L, "Gdansk", new Administrator(2L, "Romek"), visitList);
-        outpostRepository.save(outpostMapper.mapToOutpost(outpostDto1));
-        outpostRepository.save(outpostMapper.mapToOutpost(outpostDto2));
+        Visit visit = new Visit();
+        List<Visit> visitsList = new ArrayList<Visit>();
+        visitsList.add(visit);
+        PaymasterDto paymasterDto1 = new PaymasterDto(1L, "NFZ", visitsList);
+        PaymasterDto paymasterDto2 = new PaymasterDto(2L, "Abonament", visitsList);
+        List<PaymasterDto> paymasterDtoList = new ArrayList<>();
+        paymasterDtoList.add(paymasterDto1);
+        paymasterDtoList.add(paymasterDto2);
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .delete("/nzoz/outpost/" + outpostDto2.getId())
+                        .delete("/nzoz/paymaster/" + paymasterDto2.getId())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
 }
+
+

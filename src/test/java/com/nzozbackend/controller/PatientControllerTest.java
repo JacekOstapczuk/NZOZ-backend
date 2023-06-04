@@ -28,11 +28,9 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-
 @SpringJUnitWebConfig
 @WebMvcTest(PatientController.class)
 class PatientControllerTest {
-
 
     @Autowired
     public MockMvc mockMvc;
@@ -46,7 +44,7 @@ class PatientControllerTest {
     public PatientMapper patientMapper;
 
     @Test
-    public void testPatientControllerCreatePatient() throws Exception {
+    public void testCreatePatient() throws Exception {
         //Given
         List <Visit> visitsList = new ArrayList<>();
         PatientDto patientDto = new PatientDto(1L, "Tomasz", "Fronczewski", 4623414, visitsList);
@@ -68,7 +66,7 @@ class PatientControllerTest {
     }
 
     @Test
-    public void testPatientControllerGetPatients() throws Exception {
+    public void testGetPatients() throws Exception {
         //Given
         List <Visit> visitsList = new ArrayList<>();
         PatientDto patientDto1 = new PatientDto(1L, "Tomasz", "Fronczewski", 4623414, visitsList);
@@ -88,7 +86,7 @@ class PatientControllerTest {
     }
 
     @Test
-    public void testPatientControllerGetPatient() throws Exception {
+    public void testGetPatient() throws Exception {
         //Given
         List <Visit> visitsList = new ArrayList<>();
         PatientDto patientDto1 = new PatientDto(1L, "Tomasz", "Fronczewski", 4623414, visitsList);
