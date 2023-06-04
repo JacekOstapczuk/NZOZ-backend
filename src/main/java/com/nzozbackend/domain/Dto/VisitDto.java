@@ -1,13 +1,11 @@
 package com.nzozbackend.domain.Dto;
 
-import com.nzozbackend.domain.Outpost;
-import com.nzozbackend.domain.Patient;
-import com.nzozbackend.domain.Paymaster;
-import com.nzozbackend.domain.Physician;
+import com.nzozbackend.domain.*;
+import com.nzozbackend.domain.VisitSettings.VisitSettlement;
+import com.nzozbackend.domain.VisitSettings.VisitSettlementBasic;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,7 +13,6 @@ import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class VisitDto {
 
     private Long id;
@@ -26,11 +23,10 @@ public class VisitDto {
     private LocalDate date;
     private String visitName;
     private LocalTime visitDuration;
-    private BigDecimal price;
-    private String description;
+    private Settlement settlement;
 
-    @NotNull
-    public VisitDto(LocalDate date) {
-        this.date = date;
+    public  VisitDto () {
+        this.settlement = new Settlement(new VisitSettlementBasic());
     }
+
 }

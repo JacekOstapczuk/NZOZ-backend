@@ -1,20 +1,18 @@
 package com.nzozbackend.domain;
 
+import com.nzozbackend.domain.VisitSettings.VisitSettlement;
+import com.nzozbackend.domain.VisitSettings.VisitSettlementBasic;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Component
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "VISITS")
 public class Visit {
@@ -49,15 +47,16 @@ public class Visit {
     @Column(name = "VISIT_DURATION")
     private LocalTime visitDuration;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "VISIT_SETTLEMENT")
+    private Settlement settlement;
 
-    @Column(name = "PRICE")
-    private BigDecimal price;
+    public Visit () {
+        this.settlement = new Settlement( new VisitSettlementBasic());
+    }
 
-    @Column(name = "DESCRIPTION")
-    private String description;
-
-    @NotNull
-    public Visit(LocalDate date) {
-        this.date = date;
+    public void setSettlement(VisitSettlement visitSettlement) {
+       settlement.setPrice(visitSettlement.getCost());
+       settlement.setSettlement(visitSettlement.getDescription());
     }
 }

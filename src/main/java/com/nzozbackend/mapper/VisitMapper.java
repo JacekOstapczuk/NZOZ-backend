@@ -20,8 +20,7 @@ public class VisitMapper {
                 visitDto.getDate(),
                 visitDto.getVisitName(),
                 visitDto.getVisitDuration(),
-                visitDto.getPrice(),
-                visitDto.getDescription()
+                visitDto.getSettlement()
         );
     }
 
@@ -35,8 +34,7 @@ public class VisitMapper {
                 visit.getDate(),
                 visit.getVisitName(),
                 visit.getVisitDuration(),
-                visit.getPrice(),
-                visit.getDescription()
+                visit.getSettlement()
         );
     }
 

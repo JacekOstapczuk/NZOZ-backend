@@ -14,11 +14,11 @@ public class NzozBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(NzozBackendApplication.class, args);
 
-        APICalendar calendar = new APICalendar();
-		try {
-			calendar.httRequest();
-		} catch (Exception e) {
-		}
+//        APICalendar calendar = new APICalendar();
+//		try {
+//			calendar.httRequest();
+//		} catch (Exception e) {
+//		}
 
     }
 }
