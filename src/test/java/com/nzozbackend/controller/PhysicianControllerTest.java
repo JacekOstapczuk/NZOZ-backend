@@ -103,17 +103,11 @@ class PhysicianControllerTest {
     @Test
     public void testDeletePhysician() throws Exception {
         //Given
-        List<Visit> visits = new ArrayList<>();
-        PhysicianDto physicianDto1 = new PhysicianDto(1L, "Tadeusz", "Morawski", 5231, visits);
-        PhysicianDto physicianDto2 = new PhysicianDto(2L, "Romuald", "Konarski", 5231, visits);
-        List<PhysicianDto>  physicianDtoList = new ArrayList<>();
-        physicianDtoList.add(physicianDto1);
-        physicianDtoList.add(physicianDto2);
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .delete("/nzoz/physican/" + physicianDto2.getId())
+                        .delete("/nzoz/physican/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

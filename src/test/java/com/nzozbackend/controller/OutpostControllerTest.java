@@ -113,16 +113,11 @@ class OutpostControllerTest {
     @Test
     public void testDeleteOutpost() throws Exception {
         //Given
-        List<Visit> visitList = new ArrayList<Visit>();
-        OutpostDto outpostDto1 = new OutpostDto(1L, "Warsaw", new Administrator(1L, "Tomek"), visitList);
-        OutpostDto outpostDto2 = new OutpostDto(2L, "Gdansk", new Administrator(2L, "Romek"), visitList);
-        outpostRepository.save(outpostMapper.mapToOutpost(outpostDto1));
-        outpostRepository.save(outpostMapper.mapToOutpost(outpostDto2));
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .delete("/nzoz/outpost/" + outpostDto2.getId())
+                        .delete("/nzoz/outpost/1" )
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

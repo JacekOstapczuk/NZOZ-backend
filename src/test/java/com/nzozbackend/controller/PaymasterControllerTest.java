@@ -103,19 +103,11 @@ class PaymasterControllerTest {
     @Test
     public void testDeletePaymaster() throws Exception {
         //Given
-        Visit visit = new Visit();
-        List<Visit> visitsList = new ArrayList<Visit>();
-        visitsList.add(visit);
-        PaymasterDto paymasterDto1 = new PaymasterDto(1L, "NFZ", visitsList);
-        PaymasterDto paymasterDto2 = new PaymasterDto(2L, "Abonament", visitsList);
-        List<PaymasterDto> paymasterDtoList = new ArrayList<>();
-        paymasterDtoList.add(paymasterDto1);
-        paymasterDtoList.add(paymasterDto2);
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .delete("/nzoz/paymaster/" + paymasterDto2.getId())
+                        .delete("/nzoz/paymaster/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
