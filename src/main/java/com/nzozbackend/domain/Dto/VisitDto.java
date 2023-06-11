@@ -1,13 +1,10 @@
 package com.nzozbackend.domain.Dto;
 
 import com.nzozbackend.domain.*;
-import com.nzozbackend.domain.VisitSettings.VisitSettlement;
 import com.nzozbackend.domain.VisitSettings.VisitSettlementBasic;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -28,5 +25,4 @@ public class VisitDto {
     public  VisitDto () {
         this.settlement = new Settlement(new VisitSettlementBasic());
     }
-
 }

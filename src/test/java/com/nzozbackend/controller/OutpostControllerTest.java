@@ -39,15 +39,13 @@ class OutpostControllerTest {
     @MockBean
     public OutpostRepository outpostRepository;
     @MockBean
-    public OutpostController outpostController;
-    @MockBean
     public OutpostMapper outpostMapper;
 
     @Test
     public void testCreateOutpost() throws Exception {
         //Given
         List<Visit> visitList = new ArrayList<Visit>();
-        OutpostDto outpostDto = new OutpostDto(1L, "Warsaw", new Administrator(1l, "Tomek"), visitList);
+        OutpostDto outpostDto = new OutpostDto( "Warsaw", new Administrator(1l, "Tomek"), visitList);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
@@ -88,10 +86,10 @@ class OutpostControllerTest {
 
     @Test
     public void testUpdateOutpost() throws Exception {
-//Given
+        //Given
         List<Visit> visitList = new ArrayList<Visit>();
-        OutpostDto outpostDto1 = new OutpostDto(1L, "Warsaw", new Administrator(1L, "Tomek"), visitList);
-        OutpostDto outpostDto2 = new OutpostDto(2L, "Gdansk", new Administrator(2L, "Romek"), visitList);
+        OutpostDto outpostDto1 = new OutpostDto( "Warsaw", new Administrator(1L, "Tomek"), visitList);
+        OutpostDto outpostDto2 = new OutpostDto("Gdansk", new Administrator(2L, "Romek"), visitList);
         outpostRepository.save(outpostMapper.mapToOutpost(outpostDto1));
 
         Gson gson = new GsonBuilder()
@@ -103,7 +101,7 @@ class OutpostControllerTest {
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/nzoz/outpost")
+                        .put("/nzoz/outpost")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))

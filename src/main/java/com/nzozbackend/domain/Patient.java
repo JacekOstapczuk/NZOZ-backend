@@ -41,9 +41,4 @@ public class Patient {
     )
     private List<Visit> visits = new ArrayList<>();
 
-    public Patient(String name, String surname, Integer pesel) {
-        this.name = name;
-        this.surname = surname;
-        this.pesel = pesel;
-    }
 }

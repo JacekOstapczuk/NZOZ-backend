@@ -6,8 +6,6 @@ import com.nzozbackend.LocalDateTypeAdapter;
 import com.nzozbackend.LocalTimeTypeAdapter;
 import com.nzozbackend.domain.Dto.PatientDto;
 import com.nzozbackend.domain.Visit;
-import com.nzozbackend.mapper.PatientMapper;
-import com.nzozbackend.repository.PatientRepository;
 import com.nzozbackend.service.PatientService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -36,12 +34,6 @@ class PatientControllerTest {
     public MockMvc mockMvc;
     @MockBean
     public PatientService patientService;
-    @MockBean
-    public PatientRepository patientRepository;
-    @MockBean
-    public PatientController patientController;
-    @MockBean
-    public PatientMapper patientMapper;
 
     @Test
     public void testCreatePatient() throws Exception {
@@ -74,7 +66,7 @@ class PatientControllerTest {
         List <PatientDto> patientDtoList = new ArrayList<>();
         patientDtoList.add(patientDto1);
         patientDtoList.add(patientDto2);
-       when(patientService.findAllPatientDto()).thenReturn( patientDtoList);
+       when(patientService.findAllPatientDto()).thenReturn(patientDtoList);
 
         //When & Then
         mockMvc
@@ -82,7 +74,7 @@ class PatientControllerTest {
                         .get("/nzoz/patient")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(0)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
     }
 
     @Test
@@ -98,8 +90,34 @@ class PatientControllerTest {
                         .get("/nzoz/patient/" + patientDto1.getId())
                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(1)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is(patientDto1.getName())))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.surname", Matchers.is(patientDto1.getSurname())));
     }
+
+    @Test
+    public void testUpdateOutpost() throws Exception {
+        //Given
+        List <Visit> visitsList = new ArrayList<>();
+        PatientDto patientDto = new PatientDto(1L, "Konrad", "Boberek", 352, visitsList);
+
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
+                .registerTypeAdapter(LocalTime.class, new LocalTimeTypeAdapter())
+                .create();
+        String gsoncontent = gson.toJson(patientDto);
+
+        //When & Then
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .put("/nzoz/patient")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8")
+                        .content(gsoncontent))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+
 
     @Test
     public void testDeleteOutpost() throws Exception {
@@ -112,6 +130,4 @@ class PatientControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
-
 }

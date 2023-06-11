@@ -23,7 +23,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringJUnitWebConfig
@@ -32,8 +31,6 @@ class PaymasterControllerTest {
 
     @Autowired
     public MockMvc mockMvc;
-    @MockBean
-    public PaymasterController paymasterController;
     @MockBean
     public PaymasterService paymasterService;
 
@@ -111,7 +108,6 @@ class PaymasterControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
 }
 
 

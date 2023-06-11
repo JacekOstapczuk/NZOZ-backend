@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.nzozbackend.LocalDateTypeAdapter;
 import com.nzozbackend.LocalTimeTypeAdapter;
-import com.nzozbackend.domain.Dto.PaymasterDto;
 import com.nzozbackend.domain.Dto.PhysicianDto;
 import com.nzozbackend.domain.Physician;
 import com.nzozbackend.domain.Visit;
@@ -25,9 +24,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-
 
 @SpringJUnitWebConfig
 @WebMvcTest(PhysicianController.class)
@@ -88,7 +85,7 @@ class PhysicianControllerTest {
                 .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
                 .registerTypeAdapter(LocalTime.class, new LocalTimeTypeAdapter())
                 .create();
-        String gsoncontent = gson.toJson(physicianDto);
+        String gsonContent = gson.toJson(physicianDto);
 
         //When & Then
         mockMvc
@@ -96,7 +93,7 @@ class PhysicianControllerTest {
                         .put("/nzoz/physican")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
-                        .content(gsoncontent))
+                        .content(gsonContent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 

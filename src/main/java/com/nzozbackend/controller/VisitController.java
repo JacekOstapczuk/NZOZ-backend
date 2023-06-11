@@ -1,6 +1,5 @@
 package com.nzozbackend.controller;
 
-
 import com.nzozbackend.domain.Dto.VisitDto;
 import com.nzozbackend.domain.*;
 import com.nzozbackend.domain.VisitSettings.*;
@@ -25,21 +24,10 @@ public class VisitController {
     public final OutpostService outpostService;
     private final VisitMapper visitMapper;
     private final VisitSettlementBasic visitSettlementBasic;
-
-    // private final  VisitSettlementCardio visitSettlementCardio;
-
-    //  private  final VisitSettlementLungs visitSettlementLungs;
-
-    //   private  final VisitSettlementProstate visitSettlementProstate;
-
     private final VisitSettlementConfig visitSettlementConfig;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createVisit(@RequestBody VisitDto visitDto) {
-
-      //  visitDto.setSettlement(visitSettlementBasic);
-      //  visitDto.setPrice(visitSettlementBasic.getCost());
-     //   visitDto.setDescription(visitSettlementBasic.getDescription());
         visitService.saveVisitDto(visitDto);
         return ResponseEntity.ok().build();
     }
