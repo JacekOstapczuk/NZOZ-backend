@@ -9,7 +9,7 @@ import com.nzozbackend.domain.Physician;
 import com.nzozbackend.domain.Visit;
 import com.nzozbackend.service.PhysicianService;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -35,6 +35,30 @@ class PhysicianControllerTest {
     @MockBean
     public PhysicianService physicianService;
 
+    @BeforeEach
+    public void before() {
+        System.out.println("Test Case: begin");
+    }
+
+    @AfterEach
+    public void after() {
+        System.out.println("Test Case: end");
+        System.out.println(" ");
+    }
+
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("Test Suite: begin");
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("Test Suite: end");
+    }
+
+    @DisplayName("when create Physician, " +
+            "then controller should return ok"
+    )
     @Test
     public void testCreatePhysician() throws Exception {
         //Given
@@ -54,8 +78,13 @@ class PhysicianControllerTest {
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing creating new Physician");
     }
 
+    @DisplayName("when get Physician, " +
+            "then controller should return list"
+    )
     @Test
     public void testGetPhysicians() throws Exception {
         //Given
@@ -74,8 +103,13 @@ class PhysicianControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
+
+        System.out.println("Testing getting all Physician");
     }
 
+    @DisplayName("when update Physician, " +
+            "then controller should return ok"
+    )
     @Test
     public void testUpdatePhysician() throws Exception {
         //Given
@@ -95,8 +129,13 @@ class PhysicianControllerTest {
                         .characterEncoding("UTF-8")
                         .content(gsonContent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing updating Physician");
     }
 
+    @DisplayName("when delete Physician, " +
+            "then controller should return ok"
+    )
     @Test
     public void testDeletePhysician() throws Exception {
         //Given
@@ -107,5 +146,7 @@ class PhysicianControllerTest {
                         .delete("/nzoz/physican/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing deleting Physician by id");
     }
 }

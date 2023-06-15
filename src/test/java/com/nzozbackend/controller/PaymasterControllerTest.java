@@ -8,7 +8,7 @@ import com.nzozbackend.domain.Dto.PaymasterDto;
 import com.nzozbackend.domain.Visit;
 import com.nzozbackend.service.PaymasterService;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -34,7 +34,30 @@ class PaymasterControllerTest {
     @MockBean
     public PaymasterService paymasterService;
 
+    @BeforeEach
+    public void before() {
+        System.out.println("Test Case: begin");
+    }
 
+    @AfterEach
+    public void after() {
+        System.out.println("Test Case: end");
+        System.out.println(" ");
+    }
+
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("Test Suite: begin");
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("Test Suite: end");
+    }
+
+    @DisplayName("when create Paymaster, " +
+            "then controller should return ok"
+    )
     @Test
     public void testCreatePaymaster() throws Exception {
         //Given
@@ -54,8 +77,13 @@ class PaymasterControllerTest {
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing creating new Paymaster");
     }
 
+    @DisplayName("when get Paymasters, " +
+            "then controller should return list"
+    )
     @Test
     public void testGetPaymasters() throws Exception {
         //Given
@@ -74,8 +102,13 @@ class PaymasterControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
+
+        System.out.println("Testing getting all Paymasters");
     }
 
+    @DisplayName("when update Paymaster, " +
+            "then controller should return ok"
+    )
     @Test
     public void testUpdatePaymaster() throws Exception {
         //Given
@@ -95,8 +128,13 @@ class PaymasterControllerTest {
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing updating Paymaster");
     }
 
+    @DisplayName("when delete Paymaster, " +
+            "then controller should return ok"
+    )
     @Test
     public void testDeletePaymaster() throws Exception {
         //Given
@@ -107,6 +145,8 @@ class PaymasterControllerTest {
                         .delete("/nzoz/paymaster/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing deleting Paymaster by id");
     }
 }
 

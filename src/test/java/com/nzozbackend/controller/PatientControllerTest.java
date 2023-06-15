@@ -8,7 +8,7 @@ import com.nzozbackend.domain.Dto.PatientDto;
 import com.nzozbackend.domain.Visit;
 import com.nzozbackend.service.PatientService;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -35,6 +35,30 @@ class PatientControllerTest {
     @MockBean
     public PatientService patientService;
 
+    @BeforeEach
+    public void before() {
+        System.out.println("Test Case: begin");
+    }
+
+    @AfterEach
+    public void after() {
+        System.out.println("Test Case: end");
+        System.out.println(" ");
+    }
+
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("Test Suite: begin");
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("Test Suite: end");
+    }
+
+    @DisplayName("when create Patient, " +
+            "then controller should return ok"
+    )
     @Test
     public void testCreatePatient() throws Exception {
         //Given
@@ -55,8 +79,13 @@ class PatientControllerTest {
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing creating new Patient");
     }
 
+    @DisplayName("when get Patients, " +
+            "then controller should return list"
+    )
     @Test
     public void testGetPatients() throws Exception {
         //Given
@@ -75,8 +104,13 @@ class PatientControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
+
+        System.out.println("Testing getting all Outpost");
     }
 
+    @DisplayName("when get Patient by id, " +
+            "then controller should return one Patient"
+    )
     @Test
     public void testGetPatient() throws Exception {
         //Given
@@ -93,10 +127,15 @@ class PatientControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is(patientDto1.getName())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.surname", Matchers.is(patientDto1.getSurname())));
+
+        System.out.println("Testing getting Patient by id");
     }
 
+    @DisplayName("when updatePatient, " +
+            "then controller should return ok"
+    )
     @Test
-    public void testUpdateOutpost() throws Exception {
+    public void testUpdatePatient() throws Exception {
         //Given
         List <Visit> visitsList = new ArrayList<>();
         PatientDto patientDto = new PatientDto(1L, "Konrad", "Boberek", 352, visitsList);
@@ -115,12 +154,15 @@ class PatientControllerTest {
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing updating Patient");
     }
 
-
-
+    @DisplayName("when delete Patient, " +
+            "then controller should return ok"
+    )
     @Test
-    public void testDeleteOutpost() throws Exception {
+    public void testDeletePatient() throws Exception {
         //Given
 
         //When & Then
@@ -129,5 +171,7 @@ class PatientControllerTest {
                         .delete("/nzoz/patient/1" )
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing deleting Outpost by id");
     }
 }

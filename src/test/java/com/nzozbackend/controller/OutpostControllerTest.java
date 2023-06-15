@@ -11,7 +11,7 @@ import com.nzozbackend.mapper.OutpostMapper;
 import com.nzozbackend.repository.OutpostRepository;
 import com.nzozbackend.service.OutpostService;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -41,6 +41,30 @@ class OutpostControllerTest {
     @MockBean
     public OutpostMapper outpostMapper;
 
+    @BeforeEach
+    public void before() {
+        System.out.println("Test Case: begin");
+    }
+
+    @AfterEach
+    public void after() {
+        System.out.println("Test Case: end");
+        System.out.println(" ");
+    }
+
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("Test Suite: begin");
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("Test Suite: end");
+    }
+
+    @DisplayName("when create Outpost, " +
+            "then controller should return ok"
+    )
     @Test
     public void testCreateOutpost() throws Exception {
         //Given
@@ -61,8 +85,13 @@ class OutpostControllerTest {
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing creating new Outpost");
     }
 
+    @DisplayName("when get Outposts, " +
+            "then controller should return list"
+    )
     @Test
     public void testGetOutposts() throws Exception {
         //Given
@@ -82,8 +111,13 @@ class OutpostControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
+
+        System.out.println("Testing getting all Outpost");
     }
 
+    @DisplayName("when update Outpost, " +
+            "then controller should return ok"
+    )
     @Test
     public void testUpdateOutpost() throws Exception {
         //Given
@@ -106,8 +140,12 @@ class OutpostControllerTest {
                         .characterEncoding("UTF-8")
                         .content(gsoncontent))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+        System.out.println("Testing updating Outpost");
     }
 
+    @DisplayName("when delete Outpost, " +
+            "then controller should return ok"
+    )
     @Test
     public void testDeleteOutpost() throws Exception {
         //Given
@@ -118,5 +156,7 @@ class OutpostControllerTest {
                         .delete("/nzoz/outpost/1" )
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+
+        System.out.println("Testing deleting Outpost by id");
     }
 }
