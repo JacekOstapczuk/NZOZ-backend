@@ -13,7 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OutpostService {
     public final OutpostRepository outpostRepository;
-
     public final OutpostMapper outpostMapper;
 
     public List<OutpostDto> findAllOutpostDto() {

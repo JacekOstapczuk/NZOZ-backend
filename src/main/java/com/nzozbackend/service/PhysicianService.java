@@ -16,14 +16,12 @@ public class PhysicianService {
     public final PhysicianRepository physicianRepository;
     public final PhysicianMapper physicianMapper;
 
-
     public List<PhysicianDto> findAllPhysicianDto() {
         return physicianMapper.mapToPhysicianDtoList(physicianRepository.findAll());
     }
 
     public Physician findPhysician(Long physicisId) {
         return physicianRepository.findById(physicisId).get();
-
     }
 
     public Physician savePhysicianDto(PhysicianDto physicianDto) {

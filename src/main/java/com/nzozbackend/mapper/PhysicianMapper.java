@@ -29,7 +29,6 @@ public class PhysicianMapper {
                 physician.getVisits()
         );
     }
-
     public List<PhysicianDto> mapToPhysicianDtoList(final List<Physician> physicianList) {
         return physicianList.stream()
                 .map(this::mapToPhysicianDto)

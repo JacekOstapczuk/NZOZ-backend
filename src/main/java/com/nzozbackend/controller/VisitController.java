@@ -1,5 +1,6 @@
 package com.nzozbackend.controller;
 
+import com.nzozbackend.controller.exception.OutpostNotFoundException;
 import com.nzozbackend.domain.Dto.VisitDto;
 import com.nzozbackend.domain.*;
 import com.nzozbackend.domain.VisitSettings.*;

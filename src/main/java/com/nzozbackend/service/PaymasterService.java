@@ -16,7 +16,6 @@ public class PaymasterService {
     public final PaymasterRepository paymasterRepository;
     public final PaymasterMapper paymasterMapper;
 
-
     public List<PaymasterDto> findAllPaymasterDto() {
         return paymasterMapper.mapToPaymasterDtoList(paymasterRepository.findAll());
     }

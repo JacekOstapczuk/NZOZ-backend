@@ -1,6 +1,5 @@
 package com.nzozbackend.service;
 
-
 import com.nzozbackend.domain.Dto.PatientDto;
 import com.nzozbackend.domain.Patient;
 import com.nzozbackend.mapper.PatientMapper;
@@ -35,5 +34,4 @@ public class PatientService {
     public void deletePatientById(final Long patientId) {
         patientRepository.deleteById(patientId);
     }
-
 }

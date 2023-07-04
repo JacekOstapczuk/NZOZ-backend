@@ -1,5 +1,6 @@
 package com.nzozbackend.service;
 
+import com.nzozbackend.controller.exception.OutpostNotFoundException;
 import com.nzozbackend.domain.Administrator;
 import com.nzozbackend.domain.Dto.OutpostDto;
 import com.nzozbackend.domain.Outpost;
@@ -70,7 +71,8 @@ class OutpostServiceTest {
           };
 
         //When
-       Outpost searchingOutpost= outpostService.findOutpost(id1);
+            Outpost searchingOutpost = outpostService.findOutpost(id1);
+
 
         //Then
         assertEquals(outpost1.getCity(), searchingOutpost.getCity());

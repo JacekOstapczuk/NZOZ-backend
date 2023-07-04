@@ -15,7 +15,6 @@ public class VisitService {
     public final VisitRepository visitRepository;
     public final VisitMapper visitMapper;
 
-
     public List<VisitDto> findAllVisitDto() {
         return visitMapper.mapToVisitDtoList(visitRepository.findAll());
     }
@@ -31,6 +30,4 @@ public class VisitService {
     public void deleteVisitById(final Long visitId) {
         visitRepository.deleteById(visitId);
     }
-
-
 }
