@@ -14,11 +14,12 @@ public class SimpleEmail {
     private final JavaMailSender javaMailSender;
 
     public void send(final DailyVisitSummaryMail dailyVisitSummaryMail) {
-
+        log.info("Starting email preparation...");
         try {
             SimpleMailMessage mailMessage = createMailMessage(dailyVisitSummaryMail);
-            javaMailSender.send(mailMessage);
 
+            javaMailSender.send(mailMessage);
+            log.info("Email has been sent.");
         } catch (MailException e) {
             log.error("Failed to process email sending: " + e.getMessage(), e);
         }
