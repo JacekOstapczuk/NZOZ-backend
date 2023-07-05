@@ -1,7 +1,7 @@
 package com.nzozbackend.externalAPI;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.net.URI;
@@ -10,21 +10,16 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Slf4j
+@RequiredArgsConstructor
 public class APICalendar {
 
-    @Value("${calendar.api.uri}")
-    private String calendarApiUri;
-    @Value("${calendar.api.key}")
-    private String calendarApiKey;
-    @Value("${calendar.api.host}")
-    private String calendarApiHost;
+    private final CalendarConfig calendarConfig;
 
     public void httRequest() throws Exception {
-
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(calendarApiUri))
-                .header("X-RapidAPI-Key", calendarApiKey)
-                .header("X-RapidAPI-Host", calendarApiHost)
+                .uri(URI.create(calendarConfig.getCalendarApiHost()))
+                .header("X-RapidAPI-Key", calendarConfig.getCalendarApiKey())
+                .header("X-RapidAPI-Host", calendarConfig.getCalendarApiHost())
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
         try {

@@ -1,7 +1,7 @@
 package com.nzozbackend.externalAPI;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.net.URI;
@@ -10,20 +10,16 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Slf4j
+@RequiredArgsConstructor
 public class Geolocation {
-    @Value("${geolocation.api.uri}")
-    private String geolocationApiUri;
-    @Value("${geolocation.api.key}")
-    private String geolocationApiKey;
-    @Value("${geolocation.api.host}")
-    private String geolocationApiHost;
+
+    private final GeolocationConfig geolocationConfig;
 
     public void httRequest() throws Exception {
-
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(geolocationApiUri))
-                .header("X-RapidAPI-Key", geolocationApiKey)
-                .header("X-RapidAPI-Host", geolocationApiHost)
+                .uri(URI.create(geolocationConfig.getGeolocationApiUri()))
+                .header("X-RapidAPI-Key", geolocationConfig.getGeolocationApiKey())
+                .header("X-RapidAPI-Host", geolocationConfig.getGeolocationApiHost())
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
 
