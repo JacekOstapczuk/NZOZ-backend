@@ -31,7 +31,7 @@ class VisitServiceTest {
     }
 
     @Test
-    public void tesFindAllPatientsDto() {
+    public void FindAllPatientsDto_TwoVisitDto_ListOfTwoVisitDto() {
         //Given
         VisitDto visitDto1 = new VisitDto();
         VisitDto visitDto2 = new VisitDto();
@@ -51,7 +51,7 @@ class VisitServiceTest {
     }
 
     @Test
-    public void tesFindVisit() {
+    public void FindVisit_VisitId_OneVisit() {
         //Given
         VisitDto visitDto1 = new VisitDto();
         visitDto1.setVisitName("First Visit");

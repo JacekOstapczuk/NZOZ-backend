@@ -32,7 +32,7 @@ class PatientServiceTest {
     }
 
     @Test
-    public void tesFindAllPatientsDto() {
+    public void FindAllPatientsDto_TwoPatientDto_ListOfTwoPatientDto() {
         //Given
         List<Visit> visit = new ArrayList<>();
         PatientDto patientDto1 = new PatientDto(2L, "Radek", "Koryto", 874648, visit);
@@ -53,7 +53,7 @@ class PatientServiceTest {
     }
 
     @Test
-    public void tesFindPatient() {
+    public void FindPatient_PatientId_OnePatient() {
         //Given
         List<Visit> visit = new ArrayList<>();
         PatientDto patientDto1 = new PatientDto(4L, "Michal", "Drob", 2486785, visit);
@@ -75,7 +75,7 @@ class PatientServiceTest {
     }
 
     @Test
-    public void tesFindPatientDto() {
+    public void FindPatientDto_PatientId_OnePatient() {
         //Given
         List<Visit> visit = new ArrayList<>();
         PatientDto patientDto1 = new PatientDto(5L, "Dawid", "Boczek", 7458917, visit);

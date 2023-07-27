@@ -33,7 +33,7 @@ class PaymasterServiceTest {
     }
 
     @Test
-    public void tesFindAllPaymasterDto() {
+    public void FindAllPaymasterDto_TwoPaymasterDto_ListOfTwoPaymasterDto() {
         //Given
         List<Visit> visit = new ArrayList<>();
         PaymasterDto paymasterDto1 = new PaymasterDto(4L, "NZF-Bialystok", visit);
@@ -55,7 +55,7 @@ class PaymasterServiceTest {
     }
 
     @Test
-    public void tesFindPaymaster() {
+    public void FindPaymaster_PaymasterId_OnePaymaster() {
         //Given
         List<Visit> visit = new ArrayList<>();
         PaymasterDto paymasterDto1 = new PaymasterDto(5L, "NZF-Krakow", visit);
@@ -76,7 +76,7 @@ class PaymasterServiceTest {
     }
 
     @Test
-    public void tesFindPaymasterDto() {
+    public void FindPaymasterDto_PaymasterId_OnePaymasterDto() {
         //Given
         List<Visit> visit = new ArrayList<>();
         PaymasterDto paymasterDto1 = new PaymasterDto(5L, "NZF-Krakow", visit);

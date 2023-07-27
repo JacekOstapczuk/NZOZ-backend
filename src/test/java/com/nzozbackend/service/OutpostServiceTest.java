@@ -1,6 +1,5 @@
 package com.nzozbackend.service;
 
-import com.nzozbackend.controller.exception.OutpostNotFoundException;
 import com.nzozbackend.domain.Administrator;
 import com.nzozbackend.domain.Dto.OutpostDto;
 import com.nzozbackend.domain.Outpost;
@@ -38,7 +37,7 @@ class OutpostServiceTest {
     }
 
     @Test
-    public void tesFindAllOutpostDto() {
+    public void FindAllOutpostDto_TwoOutpostDto_ListOfTwoOutpostDto() {
         //Given
         List<Visit> visit = new ArrayList<>();
         OutpostDto outpost1 = new OutpostDto( "Warszawa", new Administrator(), visit );
@@ -59,7 +58,7 @@ class OutpostServiceTest {
     }
 
     @Test
-    public void tesFindOutpost() {
+    public void FindOutpost_OutpostId_OneOutpost() {
         //Given
         List<Visit> visit = new ArrayList<>();
         OutpostDto outpost1 = new OutpostDto("Krakow", new Administrator(), visit );

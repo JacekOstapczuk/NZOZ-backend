@@ -32,7 +32,7 @@ class PhysicianServiceTest {
         physicianService.deletePhysicianById(id);
     }
     @Test
-    public void tesFindAllPhysiciansDto() {
+    public void FindAllPhysiciansDto_TwoPhysicianDto_ListOfTwoPhysicianDto() {
         //Given
         List<Visit> visit = new ArrayList<>();
         PhysicianDto physicianDto1 = new PhysicianDto(4L, "Radek", "Koryto", 485498, visit);
@@ -53,7 +53,7 @@ class PhysicianServiceTest {
     }
 
     @Test
-    public void tesFindPatient() {
+    public void FindPhysician_PhysicianId_OnePhysician() {
         //Given
         List<Visit> visit = new ArrayList<>();
         PhysicianDto physicianDto1 = new PhysicianDto(2L, "Radek", "Koryto", 485498, visit);
