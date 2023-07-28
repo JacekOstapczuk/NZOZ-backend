@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Data
 @Entity
@@ -21,4 +21,8 @@ public class Administrator {
     @NotNull
     @Column(name = "SURNAME")
     private String surname;
+
+    public Administrator (String surname) {
+        this.surname=surname;
+    }
 }

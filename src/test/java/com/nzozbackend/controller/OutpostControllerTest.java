@@ -69,7 +69,7 @@ class OutpostControllerTest {
     public void testCreateOutpost() throws Exception {
         //Given
         List<Visit> visitList = new ArrayList<Visit>();
-        OutpostDto outpostDto = new OutpostDto( "Warsaw", new Administrator(1l, "Tomek"), visitList);
+        OutpostDto outpostDto = new OutpostDto( "Warsaw", new Administrator("Tomek"), visitList);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
@@ -98,8 +98,8 @@ class OutpostControllerTest {
         Visit visit = new Visit();
         List<Visit> visitList = new ArrayList<Visit>();
         visitList.add(visit);
-        OutpostDto outpostDto1 = new OutpostDto(1L, "Warsaw", new Administrator(1L, "Tomek"), visitList);
-        OutpostDto outpostDto2 = new OutpostDto(2L, "Gdansk", new Administrator(2L, "Romek"), visitList);
+        OutpostDto outpostDto1 = new OutpostDto(1L, "Warsaw", new Administrator( "Tomek"), visitList);
+        OutpostDto outpostDto2 = new OutpostDto(2L, "Gdansk", new Administrator("Romek"), visitList);
         List<OutpostDto> outpostDtoList = new ArrayList<>();
         outpostDtoList.add(outpostDto1);
         outpostDtoList.add(outpostDto2);
@@ -122,8 +122,8 @@ class OutpostControllerTest {
     public void testUpdateOutpost() throws Exception {
         //Given
         List<Visit> visitList = new ArrayList<Visit>();
-        OutpostDto outpostDto1 = new OutpostDto( "Warsaw", new Administrator(1L, "Tomek"), visitList);
-        OutpostDto outpostDto2 = new OutpostDto("Gdansk", new Administrator(2L, "Romek"), visitList);
+        OutpostDto outpostDto1 = new OutpostDto( "Warsaw", new Administrator("Tomek"), visitList);
+        OutpostDto outpostDto2 = new OutpostDto("Gdansk", new Administrator("Romek"), visitList);
         outpostRepository.save(outpostMapper.mapToOutpost(outpostDto1));
 
         Gson gson = new GsonBuilder()
